@@ -1,0 +1,35 @@
+<?php
+namespace $NAMESPACE$;
+
+use App\Interface\$CLASS_NAME$Interface;
+use App\Models\$CLASS_NAME$;
+use App\Repository\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
+
+class $CLASS_NAME$Repository extends BaseRepository implements $CLASS_NAME$Interface{
+
+        public function __construct(Slug $model)
+        {
+            $this->model = $model;
+            parent::__construct($model);
+        }
+        public function findBy($field, $value): ?Slug
+        {
+            $result = $this->model->where($field, $value)->first();
+            if(!empty($result))
+            {
+                return $result;
+            }
+            return null;
+        }
+
+        public function search($field, $value): Collection
+        {
+            $result = $this->model->where($field,'like',"%$value%")->get();
+            if(!empty($result))
+            {
+                return $result;
+            }
+            return null;
+        }
+}
