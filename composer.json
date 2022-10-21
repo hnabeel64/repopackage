@@ -1,0 +1,44 @@
+{
+    "name": "hnabeel64/repopackage",
+    "description": "Repository pattern made easy in laravel By hnabeel64",
+    "authors": [{
+        "name": "Nabeel Ali Khan",
+        "email": "nabeel@systemsinn.com"
+    }],
+    "minimum-stability": "beta",
+    "version": "1.0.1",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/hnabeel64/repopackage",
+    "autoload": {
+        "classmap": [
+            "tests"
+        ],
+        "psr-4": {
+            "Hnabeel64\\Repopackage\\": "src/",
+            "App\\": "app/",
+            "Tests\\": "tests/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Hnabeel64\\Repopackage\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hnabeel64\\Repopackage\\RepositoryServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    }
+}
