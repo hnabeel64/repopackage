@@ -66,6 +66,29 @@ Child Interface contain following extra methods
     public function search($field, $value): ?Model;
 ```
 
-:warning: **NOTE:** you have to implement these methods in controller with try catch blocks. Import the class through dependency-injection
+:warning: **NOTE:** you have to implement these methods in controller with try catch blocks. Import the repository class through dependency-injection
+Example
+
+```php
+public function search(Request $request)
+    {
+        try
+        {
+            $name = $request->name;
+            $field = 'name';
+            $result = $this->slug->search($field, $name);
+            if(!empty($result))
+            {
+                return $result;
+            }
+            return 'no record found';
+        }
+        catch (\Throwable $th) {
+            return $th;
+        }
+    }
+ ```
+ 
+ If you find any vulnerability you can open the issue on my github. any contributor are welcome :)
 
 
