@@ -12,8 +12,10 @@ just run the command and repopackage will take care the other things. ;)
   2. Then publish the vendor `php artisan vendor:publish --tag=repository`
 
   3. Now When a new table exist and you want to make a crud for it just
-     write on console `php artisan repository:make {TableName}` 
-
+     write on console `php artisan repository:make {TableName}`  if you 
+     want a model too it asks for model confirmation you just have to define
+     `protected $fillable = [];` into model and just try catch the methods on
+     controller.
 
 
 Usage
@@ -40,7 +42,7 @@ public function findLatest(): Model;
 public function findByUpdated(): Model;
 ```
 
-These are predefined methods in repository service and Interface
+These are predefined methods in repository and Interface
 have and both are bind on service container through service provider
 dynamically.
 
@@ -70,6 +72,14 @@ Child Interface contain following extra methods
 Example
 
 ```php
+use App\Repository\SlugRepository;
+
+
+private $slug;
+    public function __construct(SlugRepository $slug)
+    {
+        $this->slug = $slug;
+    }
 public function search(Request $request)
     {
         try
@@ -89,6 +99,6 @@ public function search(Request $request)
     }
  ```
  
- If you find any vulnerability you can open the issue on my github. any contributor are welcome :)
+ If you find any vulnerability or issue you can contact me on my email or open an issue here. any contributor are welcome :)
 
 
